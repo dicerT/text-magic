@@ -9,6 +9,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Remove standalone output for Vercel deployment
+  // output: 'standalone',
+  swcMinify: true,
 }
 
 export default nextConfig

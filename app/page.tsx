@@ -6,7 +6,6 @@ import HomePage from "@/components/home-page"
 import TextRepeater from "@/components/text-repeater"
 import EmojiText from "@/components/emoji-text"
 import FontText from "@/components/font-text"
-import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/components/language-provider"
 
 export type PageType = "home" | "text-repeater" | "emoji-text" | "font-text"
@@ -42,23 +41,21 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
-      <LanguageProvider>
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentPage}
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              {renderPage()}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </LanguageProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPage}
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            {renderPage()}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </LanguageProvider>
   )
 }
